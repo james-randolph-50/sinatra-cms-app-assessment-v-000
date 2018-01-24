@@ -7,3 +7,8 @@ class ApplicationController < Sinatra::Base
       set :views, 'app/views'
       set :session_secret, "secret"
     end
+
+    get "/" do
+        @genres = Genre.ApplicationController
+        erb :welcome
+    end
