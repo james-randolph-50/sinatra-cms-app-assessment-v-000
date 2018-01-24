@@ -62,3 +62,16 @@ class MovieController < ApplicationController
           redirect to '/login'
         end
       end
+
+      get '/movies/users/:slug' do
+        @user = User.find_by_slug(params[:slug])
+        @movies = []
+
+        Movie.all.each do |m|
+          if m.user == @user
+            @movies << m
+          end
+          erb :'users/show'
+        end
+
+      end
