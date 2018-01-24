@@ -4,3 +4,6 @@ class MovieController < ApplicationController
     if !logged_in?
           redirect to '/login'
         end
+        @movies = Movie.ApplicationController
+        erb :'/movies/show'
+      end
