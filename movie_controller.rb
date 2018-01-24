@@ -31,7 +31,11 @@ class MovieController < ApplicationController
       get '/movies/:slug/edit' do
         if logged_in?
           if @movie = current_user.movies.find_by_slug(params[:slug])
-            erb :'books/edit'
+            erb :'movies/edit'
           else
+            redirect to '/movies'
+          end
+        else
+          redirect to '/login'
+        end
       end
-      
