@@ -39,3 +39,26 @@ class MovieController < ApplicationController
           redirect to '/login'
         end
       end
+
+      patch '/movies/:slug/edit' do
+        if logged_in?
+          if @movie = current_user.movies.find_by_slug(params[:slug])
+            @movie.update(params[:movie])
+            redirect to '/movies/#{@movie.slug}'
+          else
+            redirect to '/movies'
+          end
+        else
+          redirect to '/login'
+        end
+      end
+
+      get '/movies/:slug' do
+        @user = current_user
+        @movie - Movie.find_by_slug(params[:slug])
+        if logged_in?
+          erb :'movies/show_movie'
+        else
+          redirect to '/login'
+        end
+      end
