@@ -18,3 +18,13 @@ class MovieController < ApplicationController
           redirect to '/login'
         end
       end
+
+      post '/movies' do
+        @movie = Movie.create(params)
+        if @movie.save
+          redirect to '/movies.#{@movie.slug}'
+        else
+          redirect to 'movies/new'
+        end
+      end
+      
