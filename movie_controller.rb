@@ -74,4 +74,9 @@ class MovieController < ApplicationController
           erb :'users/show'
         end
 
+        delete '/movies/:slug/delete' do
+          @user = current_user
+          @movie = Movie.find_by_slug(params[:slug])
+          @movie.destroy
+          redirect to 'movies/users/#{@user.slug}'
       end
