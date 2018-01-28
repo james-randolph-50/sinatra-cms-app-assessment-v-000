@@ -73,6 +73,7 @@ class MovieController < ApplicationController
           end
           erb :'users/show'
         end
+      end
 
         delete '/movies/:slug/delete' do
           @user = current_user
@@ -80,3 +81,4 @@ class MovieController < ApplicationController
           @movie.destroy
           redirect to 'movies/users/#{@user.slug}'
       end
+    end
