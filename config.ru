@@ -1,10 +1,11 @@
 require './config/environment'
-require 'rubygems'
-require 'sinatra'
-require "./app"
+require_relative './models/movie'
+
 run Sinatra::Application
 
 path = File.expand_path "../", __FILE__
+require 'rubygems'
+require 'sinatra'
 require "#{path}/movies"
 run Sinatra::Application
 
