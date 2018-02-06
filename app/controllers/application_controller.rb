@@ -9,8 +9,8 @@ class ApplicationController < Sinatra::Base
     end
 
     get "/" do
-        @genres = Genre.ApplicationController
-        erb :welcome
+      
+        erb :index
     end
 
     helpers do

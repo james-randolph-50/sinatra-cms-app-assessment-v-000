@@ -1,12 +1,12 @@
 require './config/environment'
-require_relative './models/movie'
 
+set :root, './'
 run Sinatra::Application
 
 path = File.expand_path "../", __FILE__
 require 'rubygems'
 require 'sinatra'
-require "#{path}/movies"
+
 run Sinatra::Application
 
 if ActiveRecord::Migrator.needs_migration?

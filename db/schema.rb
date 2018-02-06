@@ -11,9 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 3) do
 
-  create_table "moviess", force: :cascade do |t|
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "movies", force: :cascade do |t|
     t.string "name"
   end
 
