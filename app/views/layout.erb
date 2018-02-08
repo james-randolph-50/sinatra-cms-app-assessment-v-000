@@ -1,1 +1,25 @@
-<h1>Welcome</h1>
+<!doctype html>
+<html>
+  <head>
+    <title>Movie Tracker</title>
+  </head>
+  <body>
+    <nav>
+      <% if  logged_in? %>
+      <a href="/movies/new"> Add Movie</a>
+      <a href="/logout"> Log Out </a>
+      <p>Welcome, <%=current_user.username %></p>
+      
+      <% else %>
+      <a href="/signup">Sign Up</a>
+      <a href="/login">Login</a>
+      </a>
+    </nav>
+    <div class="container">
+      <h1>Movie Tracer</h1>
+      <% yield %>
+      
+      
+    </div>
+  </body>
+</html>
