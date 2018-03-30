@@ -1,8 +1,0 @@
-<p><%= @genre.name %>
-
-  <form method="post" action="/genres/<%=@genre.id%>/delete">
-    <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete Genre">
-  </form>
-
-  <a href="/genres/<%=@genre.id%>/edit">Edit Genre </a>
