@@ -1,5 +1,4 @@
-<h2>Add Genre</h2>
-<form action="/genres" method="POST">
-  <p>Genre: <input type="text" name="content"></p>
-  <input class="btn btn-primary" type="submit" value="submit">
-</form>
+<% @genres.each do |genre| %>
+  <li><a href="/genres/<%= genre.slug %>"> <%= genre.name %></a></li>
+  
+  <% end %>

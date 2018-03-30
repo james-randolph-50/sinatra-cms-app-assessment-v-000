@@ -1,5 +1,6 @@
 class Movie < ActiveRecord::Base
   belongs_to :user
+  has_many :genres
   
   def slug
     name.downcase.gsub(" ","-")
