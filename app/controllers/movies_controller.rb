@@ -23,4 +23,4 @@ class MoviesController < ApplicationController
     redirect("/movies/#{@movie.slug}")
   end
   
-  
+end
