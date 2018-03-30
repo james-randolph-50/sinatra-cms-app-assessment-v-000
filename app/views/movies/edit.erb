@@ -2,4 +2,14 @@
 
 <form action="/movies/<%= @movie.slug %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
+  
+  <label for="name">Name</label>
+  <input type="text" name="movie[name]" id="name" value="<%= @movie.name %>">
+  
+  <% Genre.all.each do |genre| %>
+  <label><%= genre.name %></label>
+ <input type="checkbox" name="movie[genre_ids][]" value="<%= genre.id %>" id="<%= genre.name %>" <%='checked' if @movie.genres.include?(genre) %>>
+  <% end %>
+
+  <input type="submit" value="Save">
 </form>
