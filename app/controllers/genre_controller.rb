@@ -4,8 +4,8 @@ class GenreController < ApplicationController
     if !logged_in?
           redirect to '/login'
         end
-        @genres = Genre.ApplicationController
-        erb :'/genres/show'
+        @genres = Genre.all
+        erb :'/genres/show_genre'
       end
 
       get '/genres/new/' do

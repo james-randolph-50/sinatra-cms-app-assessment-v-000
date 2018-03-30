@@ -4,8 +4,8 @@ class MovieController < ApplicationController
     if !logged_in?
           redirect to '/login'
         end
-        @movies = Movie.ApplicationController
-        erb :'/movies/show'
+        @movies = Movie.all
+        erb :'/movies/movies'
       end
 
       get '/movies/new/' do
@@ -22,7 +22,7 @@ class MovieController < ApplicationController
       post '/movies' do
         @movie = Movie.create(params)
         if @movie.save
-          redirect to '/movies.#{@movie.slug}'
+          redirect to '/movies/#{@movie.slug}'
         else
           redirect to 'movies/new'
         end
@@ -55,7 +55,7 @@ class MovieController < ApplicationController
 
       get '/movies/:slug' do
         @user = current_user
-        @movie - Movie.find_by_slug(params[:slug])
+        @movie = Movie.find_by_slug(params[:slug])
         if logged_in?
           erb :'movies/show_movie'
         else
