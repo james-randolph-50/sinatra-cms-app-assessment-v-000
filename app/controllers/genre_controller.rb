@@ -4,7 +4,7 @@ class GenreController < ApplicationController
     if !logged_in?
           redirect to '/login'
         end
-       # @genres = Genre.ApplicationController
+        @genres = Genre.ApplicationController
         erb :'/genres/show'
       end
 

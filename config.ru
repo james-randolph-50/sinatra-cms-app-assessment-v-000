@@ -14,6 +14,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
+use GenreController
 use MovieController
 use UsersController
 run ApplicationController
