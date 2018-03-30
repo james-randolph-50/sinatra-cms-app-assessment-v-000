@@ -1,4 +1,5 @@
 require './config/environment'
+require 'pry'
 
 class ApplicationController < Sinatra::Base
 
@@ -20,7 +21,9 @@ class ApplicationController < Sinatra::Base
       end
 
       def current_user
-        @current_user ||= User.find_by(id: session[:user_id]) if session [:user_id]
+        
+        @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+        
         
       end
     end
