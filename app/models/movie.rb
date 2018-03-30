@@ -6,7 +6,7 @@ class Movie < ActiveRecord::Base
   end
   
   def self.find_by_slug(slug)
-    Move.all.find{|movie| movie.slug == slug}
+    Movie.all.find{|movie| movie.slug == slug}
   end
   
 end

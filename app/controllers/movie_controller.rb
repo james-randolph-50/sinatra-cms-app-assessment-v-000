@@ -18,6 +18,12 @@ class MovieController < ApplicationController
           redirect to '/login'
         end
       end
+      
+      get '/movies/:slug' do
+        @movie = Movie.find_by_slug(params[:slug])
+        
+        erb :'movies/show_movie'
+      end 
 
       post '/movies' do
         @movie = Movie.create(params)
