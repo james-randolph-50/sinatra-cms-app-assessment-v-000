@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   
   get '/movies' do
     @movies = Movie.all
-    erb :'/movies/index'
+    erb :'/movies/show'
   end
   
   get '/movies/new' do
