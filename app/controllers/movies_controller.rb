@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
   
   post '/movies' do
     @movie = Movie.create(:name => params["Name"])
-    @movie.genre_ids = params[:genres]
+    @movie.genres = params[:genres]
     @movie.save
     
     redirect("/movies/#{@movie.slug}")
