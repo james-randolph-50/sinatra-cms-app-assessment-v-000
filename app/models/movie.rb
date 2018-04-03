@@ -3,7 +3,7 @@ class Movie < ActiveRecord::Base
   has_many :genres
   
   def slug
-    movie['name'].to_s.downcase.gsub(" ","-")
+    name.downcase.gsub(" ","-")
   end
   
   def self.find_by_slug(slug)
