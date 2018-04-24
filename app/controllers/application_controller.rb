@@ -17,14 +17,21 @@ class ApplicationController < Sinatra::Base
     
 
     helpers do
+      
       def logged_in?
         !!current_user
       end
-
+      
+      def redirect_if_not_logged_in
+        if !logged_in?
+          redirect "/login?error=You need to login first."
+        end
+      end
+      
+      
       def current_user
         
         @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-        
         
       end
     end
