@@ -1,5 +1,12 @@
+<h1>All Movies</h1># header All movies
+
+# iterate through Movie array to display each movie.name
 
 
-<h1> <%= @movie.name %> </h1>
+<ul>
+  <% @movies.each do |movie| %>
+  <li><a href="/movies/<%= movie.slug %>"><%= movie.name %> </a></li>
+  <% end %>
+</ul>
 
-<a href="/movies"></a>
+
