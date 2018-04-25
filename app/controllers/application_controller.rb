@@ -10,23 +10,19 @@ class ApplicationController < Sinatra::Base
       set :views, 'app/views'
       set :session_secret, "secret"
     end
-
-    get "/" do
-        erb :index
-    end
     
-
+    
     helpers do
       
       def logged_in?
         !!current_user
       end
       
-      def redirect_if_not_logged_in
-        if !logged_in?
-          redirect "/login?error=You need to login first."
-        end
-      end
+     # def redirect_if_not_logged_in
+     #   if !logged_in?
+      #    redirect "/login?error=You need to login first."
+      #  end
+    #  end
       
       
       def current_user
@@ -34,6 +30,17 @@ class ApplicationController < Sinatra::Base
         @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
         
       end
+
+    get "/" do
+        erb :index
+        
+    end
+    
+    get "/movies" do
+      erb :'/movies/show'
+    end
+  end
+    
+
     end
 
-end

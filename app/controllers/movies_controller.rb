@@ -2,19 +2,19 @@ require 'pry'
 
 class MoviesController < ApplicationController
   
-  get '/movies/show' do
-    redirect_if_not_logged_in
+  get '/movies' do
+    #redirect_if_not_logged_in
     @movies = Movie.all
-    erb :'/movies/show'
+    erb :'/movies/index'
   end
   
   get '/movies/new' do
-    redirect_if_not_logged_in
+    #redirect_if_not_logged_in
     erb :'/movies/new'
   end
   
   get '/movies/:slug' do
-    redirect_if_not_logged_in
+   # redirect_if_not_logged_in
     @movie = Movie.find_by_slug(params[:slug])
     
     erb :'movies/show'
