@@ -35,10 +35,6 @@ class ApplicationController < Sinatra::Base
         erb :index
         
     end
-    
-    #get "/movies" do
-    #  erb :'/movies/show'
-   # end
   end
     
 

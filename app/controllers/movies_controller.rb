@@ -2,14 +2,9 @@ require 'pry'
 
 class MoviesController < ApplicationController
   
- # def index
-  #  @movies = Movie.all
-  #end 
-
-  
   get '/movies' do
    
-   # redirect_if_not_logged_in
+   redirect_if_not_logged_in
     @movies = Movie.all
     
     erb :'/movies/index'
@@ -28,8 +23,7 @@ class MoviesController < ApplicationController
   end
   
   post '/movies' do
-    @movie = Movie.create(:name => params["Movie_Name"], :)
-    #@movie.genres = params[:genres]
+    @movie = Movie.create(:name => params["Movie_Name"], :slug => params["UserId"])
     @movie.save
     
     redirect("/movies/#{@movie.slug}")

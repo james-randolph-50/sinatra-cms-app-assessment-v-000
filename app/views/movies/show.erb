@@ -4,6 +4,7 @@
 <ul>
   <% @movies.to_a.each do |movie| %>
   <li><a href="/movies/<%= movie.slug %>"><%= movie.name %> </a></li>
+  <li><a href="/movies/<%=movie.name%>/edit">Edit</a></li>
   <% end %>
 </ul>
 
