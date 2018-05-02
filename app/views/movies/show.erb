@@ -1,12 +1,15 @@
-<h1>All Movies</h1># header All movies
-
-# iterate through Movie array to display each movie.name
+<h1>All Movies</h1>
 
 
 <ul>
-  <% @movies.each do |movie| %>
+  <% @movies.to_a.each do |movie| %>
   <li><a href="/movies/<%= movie.slug %>"><%= movie.name %> </a></li>
   <% end %>
 </ul>
 
+<%= @movie.user.username %>
 
+# add edit/delete functionality
+# only edit if you are user that created it
+# Block routes for /movies and so forth
+# users and movies fulfills relationship rewuirement

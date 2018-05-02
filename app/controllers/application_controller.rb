@@ -18,11 +18,11 @@ class ApplicationController < Sinatra::Base
         !!current_user
       end
       
-      #def redirect_if_not_logged_in
-       # if !logged_in?
-        #  redirect "/login?error=You need to login first."
-        #end
-      #end
+      def redirect_if_not_logged_in
+        if !logged_in?
+          redirect "/login?error=You need to login first."
+        end
+      end
       
       
       def current_user
@@ -36,9 +36,9 @@ class ApplicationController < Sinatra::Base
         
     end
     
-    get "/movies" do
-      erb :'/movies/show'
-    end
+    #get "/movies" do
+    #  erb :'/movies/show'
+   # end
   end
     
 

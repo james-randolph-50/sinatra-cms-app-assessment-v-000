@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+  
   belongs_to :user
   has_many :genres
   
@@ -9,5 +10,7 @@ class Movie < ActiveRecord::Base
   def self.find_by_slug(slug)
     Movie.all.find{|movie| movie.slug == slug}
   end
+  
+  
   
 end
