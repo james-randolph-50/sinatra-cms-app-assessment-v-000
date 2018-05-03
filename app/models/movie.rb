@@ -1,9 +1,10 @@
+require 'pry'
 class Movie < ActiveRecord::Base
   
   belongs_to :user
-  has_many :genres
   
   def slug
+    binding.pry
     name.downcase.gsub(" ","-")
   end
   

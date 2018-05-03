@@ -1,4 +1,3 @@
-
 class MoviesController < ApplicationController
   
 
@@ -7,16 +6,19 @@ class MoviesController < ApplicationController
 
    redirect_if_not_logged_in
     @movies = Movie.all
-    
     erb :'/movies/index'
+    
   end
   
   get '/movies/new' do
+    
     redirect_if_not_logged_in
-    erb :'/movies/new'
+    erb :'/movies/new'\
+    
   end
   
  get "/movies/:id/edit" do
+   
     redirect_if_not_logged_in 
     @error_message = params[:error]
     
@@ -26,6 +28,7 @@ class MoviesController < ApplicationController
     else
       redirect to '/login'
     end
+    
   end
   
   get '/movies/:slug' do
@@ -36,13 +39,16 @@ class MoviesController < ApplicationController
   
   post '/movies' do
     redirect_if_not_logged_in
-    @movie = Movie.create(:name => params["name"])
+    @movie = Movie.create(:name => params["Movie_name"])
     
     @movie.save
     redirect("/movies/#{@movie.slug}")
   end
   
-
-    
+  delete '/movies/:slug' do
+    @movie = Movie.delete(params[:slug])
+    redirect to("/")
+  end
+  
   
 end
