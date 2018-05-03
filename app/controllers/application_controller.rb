@@ -33,17 +33,8 @@ class ApplicationController < Sinatra::Base
 
     get "/" do
         erb :index
-        
     end
-<<<<<<< HEAD
-=======
-    
-    #get "/movies" do
-    #  erb :'/movies/show'
-   # end
->>>>>>> a245aaba1fdfe9b62840850ff56bc6f7c8e9eeee
   end
-    
+end
 
-    end
 
