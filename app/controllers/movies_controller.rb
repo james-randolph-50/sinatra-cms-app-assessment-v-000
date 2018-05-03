@@ -1,9 +1,13 @@
 
 class MoviesController < ApplicationController
   
+
+  
   get '/movies' do
+
    redirect_if_not_logged_in
     @movies = Movie.all
+    
     erb :'/movies/index'
   end
   
@@ -27,8 +31,10 @@ class MoviesController < ApplicationController
   end
   
   post '/movies' do
+
     redirect_if_not_logged_in
     @movie = Movie.create(:name => params["Movie_Name"], :user_id => params[:id])
+    @movie = Movie.create(:name => params["Movie_Name"])
     @movie.save
     
     redirect("/movies/#{@movie.slug}")
