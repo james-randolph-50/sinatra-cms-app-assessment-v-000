@@ -8,8 +8,8 @@ class Movie < ActiveRecord::Base
   end
   
   def self.find_by_slug(slug)
-    binding.pry
-    Movie.all.find{|movie| movie.slug == slug}
+   
+    Movie.all.find{|movie| movie.name.downcase == slug}
   end
   
   
