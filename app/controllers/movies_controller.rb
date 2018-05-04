@@ -40,7 +40,7 @@ class MoviesController < ApplicationController
   post '/movies' do
     redirect_if_not_logged_in
     @movie = Movie.create(:name => params["Movie_Name"])
-    binding.pry
+    
     @movie.save
     redirect("/movies/#{@movie.slug}")
   end
