@@ -18,12 +18,12 @@ class MoviesController < ApplicationController
   end
   
  get "/movies/:id/edit" do
-   binding.pry
+
     redirect_if_not_logged_in 
     @error_message = params[:error]
     
     if session[:user_id]
-      @movie = Movie.find(params[:slug])
+      @movie = Movie.find_by_slug(params[:id])
       erb :'movies/edit'
     else
       redirect to '/login'
@@ -40,7 +40,7 @@ class MoviesController < ApplicationController
   post '/movies' do
     redirect_if_not_logged_in
     @movie = Movie.create(:name => params["Movie_Name"])
-   # binding.pry
+    binding.pry
     @movie.save
     redirect("/movies/#{@movie.slug}")
   end
