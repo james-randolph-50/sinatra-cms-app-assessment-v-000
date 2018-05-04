@@ -8,8 +8,13 @@ class Movie < ActiveRecord::Base
   end
   
   def self.find_by_slug(slug)
-   
-    Movie.all.find{|movie| movie.name.downcase == slug}
+    
+    Movie.all.find do |movie|
+      if movie.name 
+      
+      movie.name.downcase == slug
+     end
+    end
   end
   
   
