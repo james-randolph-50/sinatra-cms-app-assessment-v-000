@@ -4,7 +4,7 @@ class Movie < ActiveRecord::Base
   belongs_to :user
   
   def slug
-    binding.pry
+  #  binding.pry
     name.downcase.gsub(" ","-")
   end
   

@@ -13,12 +13,12 @@ class MoviesController < ApplicationController
   get '/movies/new' do
     
     redirect_if_not_logged_in
-    erb :'/movies/new'\
+    erb :'/movies/new'
     
   end
   
  get "/movies/:id/edit" do
-   
+   binding.pry
     redirect_if_not_logged_in 
     @error_message = params[:error]
     
@@ -39,8 +39,8 @@ class MoviesController < ApplicationController
   
   post '/movies' do
     redirect_if_not_logged_in
-    @movie = Movie.create(:name => params["Movie_name"])
-    
+    @movie = Movie.create(:name => params["Movie_Name"])
+   # binding.pry
     @movie.save
     redirect("/movies/#{@movie.slug}")
   end
