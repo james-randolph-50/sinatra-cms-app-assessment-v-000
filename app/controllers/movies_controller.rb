@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  
+
 
   
   get '/movies' do

@@ -1,10 +1,10 @@
-<h1>Edit <%= @movie.name %></h1>
+<h1>Edit <%= Movie.name %></h1>
 
-<form action="/movies/<%= @movie.slug %>" method="POST">
+<form action="/movies/<%= Movie.find_by_slug(params[:slug]) %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
   
   <label for="name">Name</label>
-  <input type="text" name="movie[name]" id="name" value="<%= @movie.name %>">
+  <input type="text" name="movie[name]" id="name" value="<%= Movie.name %>">
 
   <input type="submit" value="Save">
 </form>
