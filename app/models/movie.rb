@@ -5,19 +5,16 @@ class Movie < ActiveRecord::Base
   
   def slug
     
-    Movie.name.downcase.gsub(" ","-")
+    # what keyword represents the particular instance we're calling #slug on??
+    self.name.downcase.gsub(" ","-")
   end
   
   def self.find_by_slug(slug)
     
-    Movie.all.find do |movie|
-      if movie.name 
-      
-      movie.name.downcase == slug
-     end
-    end
+    all.find { |movie| movie.slug == slug }
+    
   end
   
   
-  
+
 end
