@@ -39,10 +39,20 @@ class MoviesController < ApplicationController
   
   post '/movies' do
     redirect_if_not_logged_in
-    @movie = Movie.create(:name => params["Movie_Name"])
+    
+    # let's build a Movie instance but don't save it yet 
+    # using the params that are passed in
+    # @movie = Movie.new(:name => params["Movie_Name"])
+    # if the @movie is valid  (the movie already exists) 
+      # do "movie exists stuff"
+   # else 
+      # commit to the database
+   # end 
+   
+   # @movie = Movie.create(:name => params["Movie_Name"])
     #Validation for movie
-    @movie.save
-    redirect("/movies/#{@movie.slug}")
+   # @movie.save
+   # redirect("/movies/#{@movie.slug}")
   end
   
   delete '/movies/:slug' do
