@@ -1,6 +1,5 @@
 class MoviesController < ApplicationController
 
-
   
   get '/movies' do
 
@@ -42,28 +41,22 @@ class MoviesController < ApplicationController
     
      @movie = Movie.new(:name => params["Movie_Name"])
      
-     @movie.valid? @movie.save : @movie.errors.add('movie already exists')
-    # ^resource for line 45 https://apidock.com/rails/ActiveResource/Validations/valid%3F
+     if @movie.valid? && @movie.exists?
+       @movie.save
+      else
+     @movie.('movie already exists')
+   end
+    # ^resource https://apidock.com/rails/ActiveResource/Validations/valid%3F
 
 # let's build a Movie instance but don't save it yet 
     # using the params that are passed in
-    
-    # if the @movie is valid  (the movie already exists) 
-      # do "movie exists stuff"
-   # else 
-      # commit to the database
-   # end 
-   
-   # @movie = Movie.create(:name => params["Movie_Name"])
-    
-   # @movie.save
-   # redirect("/movies/#{@movie.slug}")
+  
+    redirect("/movies/#{@movie.slug}")
   end
   
   delete '/movies/:slug' do
     @movie = Movie.delete(params[:slug])
     redirect to("/")
   end
-  
   
 end
