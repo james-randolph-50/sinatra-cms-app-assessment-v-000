@@ -40,9 +40,14 @@ class MoviesController < ApplicationController
   post '/movies' do
     redirect_if_not_logged_in
     
-    # let's build a Movie instance but don't save it yet 
+     @movie = Movie.new(:name => params["Movie_Name"])
+     
+     @movie.valid? @movie.save : @movie.errors.add('movie already exists')
+    # ^resource for line 45 https://apidock.com/rails/ActiveResource/Validations/valid%3F
+
+# let's build a Movie instance but don't save it yet 
     # using the params that are passed in
-    # @movie = Movie.new(:name => params["Movie_Name"])
+    
     # if the @movie is valid  (the movie already exists) 
       # do "movie exists stuff"
    # else 
@@ -50,7 +55,7 @@ class MoviesController < ApplicationController
    # end 
    
    # @movie = Movie.create(:name => params["Movie_Name"])
-    #Validation for movie
+    
    # @movie.save
    # redirect("/movies/#{@movie.slug}")
   end
