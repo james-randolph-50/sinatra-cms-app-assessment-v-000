@@ -4,6 +4,7 @@ class MoviesController < ApplicationController
   get '/movies' do
 
    redirect_if_not_logged_in
+   
     @movies = Movie.all
     erb :'/movies/index'
     
@@ -41,7 +42,7 @@ class MoviesController < ApplicationController
     
      @movie = Movie.new(:name => params["Movie_Name"])
      
-     if @movie.valid? && @movie.exists?
+     if @movie.valid?
        @movie.save
       else
      @movie.('movie already exists')

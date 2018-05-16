@@ -8,7 +8,6 @@ class Movie < ActiveRecord::Base
   
   
   def slug
-    
     name.downcase.gsub(" ","-")
   end
   

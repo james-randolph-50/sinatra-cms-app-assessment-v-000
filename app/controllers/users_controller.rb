@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
   
   get '/users/:slug' do
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
       redirect to '/signup'
     else
       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
+      
       @user.save
       session[:user_id] = @user.id
       redirect to '/'
@@ -33,8 +35,8 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    user = User.find_by(:username => params[:username])
-    if user && user.authenticate(params[:password])
+    @user = User.find_by(:username => params[:username])
+    if User && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect "/movies"
     else
