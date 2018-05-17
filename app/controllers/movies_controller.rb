@@ -23,7 +23,7 @@ class MoviesController < ApplicationController
     @error_message = params[:error]
     
     if session[:user_id]
-      @movie = Movie.find_by_slug(params[:id])
+      @movie = Movie.find_by_slug(params[:slug])
       erb :'movies/edit'
     else
       redirect to '/login'

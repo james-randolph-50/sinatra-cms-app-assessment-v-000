@@ -1,5 +1,5 @@
-<h1>Edit <%= @movie.name %></h1>
 
+<h1>Edit <%= @movie.name %></h1>
 <form action="/movies/<%= Movie.find_by_slug(params[:slug]) %>" method="POST">
   <input type="hidden" name="_method" value="PATCH">
   
