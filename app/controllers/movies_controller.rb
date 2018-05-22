@@ -51,9 +51,11 @@ class MoviesController < ApplicationController
     redirect("/movies/#{@movie.slug}")
   end
   
-  def destroy
+  delete '/movies/:slug/delete' do
+    redirect_if_not_logged_in
     @movie = Movie.find_by_slug(params[:slug])
-    @movie.destroy
+    @movie.delete
+    
     redirect("/movies/show")
   end
   
