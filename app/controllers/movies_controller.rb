@@ -51,9 +51,10 @@ class MoviesController < ApplicationController
     redirect("/movies/#{@movie.slug}")
   end
   
-  delete '/movies/:slug' do
-    @movie = Movie.delete(params[:slug])
-    redirect to("/")
+  def destroy
+    @movie = Movie.find_by_slug(params[:slug])
+    @movie.destroy
+    redirect("/movies/show")
   end
   
 end

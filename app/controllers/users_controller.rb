@@ -36,8 +36,8 @@ class UsersController < ApplicationController
 
   post '/login' do
     @user = User.find_by(:username => params[:username])
-    if User && user.authenticate(params[:password])
-      session[:user_id] = user.id
+    if User && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
       redirect "/movies"
     else
       redirect to '/signup'
