@@ -17,7 +17,7 @@ class MoviesController < ApplicationController
     
   end
   
- get "/movies/:id/edit" do
+ get "/movies/:slug/edit" do
 
     redirect_if_not_logged_in 
     @error_message = params[:error]
@@ -47,10 +47,6 @@ class MoviesController < ApplicationController
       else
      @movie.('movie already exists')
    end
-    # ^resource https://apidock.com/rails/ActiveResource/Validations/valid%3F
-
-# let's build a Movie instance but don't save it yet 
-    # using the params that are passed in
   
     redirect("/movies/#{@movie.slug}")
   end
