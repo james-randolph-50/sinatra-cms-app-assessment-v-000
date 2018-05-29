@@ -24,7 +24,11 @@ class MoviesController < ApplicationController
     
     if session[:user_id]
       @movie = Movie.find_by_slug(params[:slug])
+      if @movie.user == @user
       erb :'movies/edit'
+    else
+      redirect to '/movies/index'
+      end
     else
       redirect to '/login'
     end
@@ -39,7 +43,6 @@ class MoviesController < ApplicationController
   
   post '/movies' do
     redirect_if_not_logged_in
-    
      @movie = Movie.new(:name => params["Movie_Name"])
      
      if @movie.valid?
@@ -53,10 +56,15 @@ class MoviesController < ApplicationController
   
   delete '/movies/:slug/delete' do
     redirect_if_not_logged_in
-    @movie = Movie.find_by_slug(params[:slug])
-    @movie.delete
+    if @movie.user == @user
+      @movie = Movie.find_by_slug(params[:slug])
+      @movie.delete
+      redirect("/movies")
+    else
+    
     
     redirect("/movies")
   end
+end
   
 end
