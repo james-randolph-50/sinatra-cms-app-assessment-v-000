@@ -24,10 +24,10 @@ class MoviesController < ApplicationController
     
     if session[:user_id]
       @movie = Movie.find_by_slug(params[:slug])
-      if @movie.user == @user
+      if @movie.user == current_user.id
       erb :'movies/edit'
     else
-      redirect to '/movies/index'
+      redirect to '/movies'
       end
     else
       redirect to '/login'
@@ -56,12 +56,11 @@ class MoviesController < ApplicationController
   
   delete '/movies/:slug/delete' do
     redirect_if_not_logged_in
-    if @movie.user == @user
       @movie = Movie.find_by_slug(params[:slug])
+      if @movie.user == current_user.id
       @movie.delete
       redirect("/movies")
     else
-    
     
     redirect("/movies")
   end
