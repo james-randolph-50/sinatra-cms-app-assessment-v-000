@@ -7,6 +7,8 @@
   <li><a href="/movies"> See Movies </a></li>
 </ul>
 
-<div>
-  <p><% current_user.movies.each do |movie| %> </p>
-</div>
+  <% current_user.movies.each do |movie| %>
+  <div>
+    <%= @movies.name %>
+  </div>
+  <%end%>
