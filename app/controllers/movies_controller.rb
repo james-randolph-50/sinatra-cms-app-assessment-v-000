@@ -43,8 +43,8 @@ class MoviesController < ApplicationController
   
   post '/movies' do
     redirect_if_not_logged_in
-     @movie = Movie.new(:name => params["Movie_Name"])
-     
+     @movie = Movie.new(:name => params["Movie_Name"], :user_id => current_user.id)
+     binding.pry
      if @movie.valid?
        @movie.save
       else
