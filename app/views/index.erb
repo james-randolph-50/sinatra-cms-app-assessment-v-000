@@ -7,8 +7,9 @@
   <li><a href="/movies"> See Movies </a></li>
 </ul>
 
+
   <% current_user.movies.each do |movie| %>
-  <div>
+  <p>
     <%= movie.name %>
-  </div>
+  </p>
   <%end%>
